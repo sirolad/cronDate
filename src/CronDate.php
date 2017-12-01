@@ -6,15 +6,20 @@ use DateTime;
 
 class CronDate
 {
-    protected $minute;
-
     protected $dateObject;
 
+    /**
+     * CronDate constructor.
+     * @param string $dateString
+     */
     public function __construct(string $dateString)
     {
         $this->dateObject = new DateTime($dateString);
     }
 
+    /**
+     * @return string
+     */
     public function getCronDate()
     {
         return $this->getMinute() . ' ' .
@@ -24,31 +29,50 @@ class CronDate
             $this->getDayInWeek();
     }
 
+    /**
+     * @return int
+     */
     protected function getMinute()
     {
         return (int) $this->dateObject->format('i');
     }
 
+    /**
+     * @return int
+     */
     protected function getHour()
     {
         return (int) $this->dateObject->format('H');
     }
 
+    /**
+     * @return int
+     */
     protected function getDayOfMonth()
     {
         return (int) $this->dateObject->format('d');
     }
 
+    /**
+     * @return int
+     */
     protected function getMonth()
     {
         return (int) $this->dateObject->format('m');
     }
 
+    /**
+     * @return mixed
+     */
     protected function getDayInWeek()
     {
         return $this->dayNumber($this->dateObject->format('l'));
     }
 
+    /**
+     * @param $day
+     * @return mixed
+     */
     protected function dayNumber($day)
     {
         $days = [
@@ -64,7 +88,3 @@ class CronDate
         return $days[$day];
     }
 }
-
-$a = new CronDate('2017-12-2 11:02:25');
-echo $a->getCronDate();
-// print_r($a);
