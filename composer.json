@@ -1,0 +1,19 @@
+{
+    "name": "sirolad/cron-date",
+    "description": "A PHP library to get cron expression from date object",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Surajudeen Akande",
+            "email": "surajudeen.akande@andela.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Sirolad\\": "src/"
+        }
+    }
+}
